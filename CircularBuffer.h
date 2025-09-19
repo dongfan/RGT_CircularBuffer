@@ -8,6 +8,14 @@ public:
     explicit CircularBuffer(size_t capacity)
         : buffer_(capacity), capacity_(capacity), head_(0), tail_(0), size_(0) {}
 
+    void push(const T& item) {
+        if (size_ == capacity_)
+            throw std::overflow_error("Buffer is full");
+        buffer_[tail_] = item;
+        tail_ = (tail_ + 1) % capacity_;
+        ++size_;
+    }
+
     void push_back(const T& item) {
         push(item);
     }

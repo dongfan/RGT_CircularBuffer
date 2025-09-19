@@ -1,5 +1,6 @@
 #include <iostream>
 #include <numeric>
+#include <algorithm>
 #include "CircularBuffer.h"
 
 int main() {
