@@ -8,16 +8,15 @@ public:
     explicit CircularBuffer(size_t capacity)
         : buffer_(capacity), capacity_(capacity), head_(0), tail_(0), size_(0) {}
 
-    void push(const T& item) {
-        if (size_ == capacity_)
-            throw std::overflow_error("Buffer is full");
+    void push_back(const T& item) {
+        if (size_ == capacity_) {
+            // 덮어쓰기: head를 앞으로 이동
+            head_ = (head_ + 1) % capacity_;
+            --size_;
+        }
         buffer_[tail_] = item;
         tail_ = (tail_ + 1) % capacity_;
         ++size_;
-    }
-
-    void push_back(const T& item) {
-        push(item);
     }
 
     T pop() {

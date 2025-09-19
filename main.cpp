@@ -20,18 +20,19 @@ int main() {
     double avgTemp = std::accumulate(tempBuffer.begin(), tempBuffer.end(), 0.0) / tempBuffer.size();
 
     // 인덱스 순서대로 출력 (버퍼 내부 배열 기준)
-    std::cout << "Buffer values by index: ";
-    for (size_t i = 0; i < tempBuffer.capacity(); ++i) {
-        std::cout << tempBuffer.back() << " "; // tempBuffer[i]가 없으므로 back() 예시
+    std::cout << "버퍼 내용(인덱스 순서): [";
+    for (const auto& value : tempBuffer) {
+        std::cout << value << " ";
+        std::cout << ",";
     }
-    std::cout << std::endl;
+    std::cout << "]" << std::endl;
 
     // begin()부터 end()까지 순회하며 출력 (실제 데이터 순서)
-    std::cout << "Buffer values by iterator: ";
-    for (auto it = tempBuffer.begin(); it != tempBuffer.end(); ++it) {
-        std::cout << *it << " ";
+    std::cout << "begin()부터 순회 시: ";
+    for (const auto& value : tempBuffer) {
+        std::cout << value << ",";
     }
-    std::cout << std::endl;
+    std::cout << " (가장 오래된 것부터)" << std::endl;
 
     // 버퍼 정보 출력
     std::cout << "tempBuffer.size() = " << tempBuffer.size() << std::endl;
