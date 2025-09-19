@@ -33,7 +33,7 @@ int main() {
         std::cout << value << ",";
     }
     std::cout << " (가장 오래된 것부터)" << std::endl;
-    std::cout << "]\n";
+    std::cout << "\n";
 
     // 버퍼 정보 출력
     std::cout << "tempBuffer.size() = " << tempBuffer.size() << std::endl;
